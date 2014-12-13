@@ -35,17 +35,7 @@ class UsersController extends AppController {
             $stat = $user['User']['id'];
         }
         
-
-        $response = array(
-            'message' => 'Success',
-            'data' => $stat
-        );
-
-        $this->set(array(
-            'response' => $response,
-            '_serialize' => 'response'
-        ));
-
+        $this->success($stat);
     }
 
 }
