@@ -14,4 +14,22 @@ class UsersController extends AppController {
         ));
     }
 
+    public function register() {
+        $data = $this->request->data;
+        $stat = $this->User->register($data);
+
+        if ($stat) {
+            $response = array('message' => 'Register success');
+        } else {
+            $response = array('message' => 'Register failure');
+        }
+
+        $this->set(array(
+            'response' => $response,
+            '_serialize' => 'response'
+        ));
+
+
+    }
+
 }
