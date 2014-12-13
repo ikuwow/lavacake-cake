@@ -12,7 +12,7 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 アプリ側でFacebookかTwitterの認証が成功した後、DBにアクセストークンを保存するメソッド
 
 * /users/register.json
-* POSTでusername: [:user_id]
+* POSTでusername: [:username]
 * ユーザーが存在しなかったら新規登録、存在したらそのまま。
 * successとuser_idが帰ってきます
 
