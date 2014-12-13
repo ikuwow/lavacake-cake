@@ -12,22 +12,23 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 アプリ側でFacebookかTwitterの認証が成功した後、DBにアクセストークンを保存するメソッド
 
 * /users/register.json
-* postでusername: ****
+* POSTでusername: [:user_id]
 * ユーザーが存在しなかったら新規登録、存在したらそのまま。
 * successとuser_idが帰ってきます
 
 
-### ユーザーの持っているタイムラインを全て取得（未実装）
+### ユーザーの持っているタイムラインを全て取得
 
 ログインユーザーの持っているタイムラインを全て取得
 
-* /users/timelines.json
+* /users/timelines.json?uid=[:user_id]
 * GET
 
 ### タイムライン（一人）の中のアカウントID情報を全て取得（未実装）
 
 * /timeline/[timeline_id].json
 * GET
+* successとタイムライン一覧が帰ってきます
 
 ### タイムラインを作成（未実装）
 
