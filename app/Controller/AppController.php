@@ -32,8 +32,6 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    // public $autoRender = false;
-
     public $components = array(
         'RequestHandler'
     );
@@ -42,16 +40,30 @@ class AppController extends Controller {
         parent::beforeFilter();
     }
 
-    public function success($data) {
+    public function success($data = array()) {
+        $this->resonse->statusCode(200);
         $response = array(
-            'message' => 'success',
+            'responseCode' => 1000,
+            'message' => 'Success',
             'data' => $data
         );
         $this->set(array(
             'response' => $response,
             '_serialize' => 'response'
         ));
+    }
 
+    public function badRequest($data = array()) {
+        $this->response->statusCode(400);
+        $response = array(
+            'responseCode' => 2000,
+            'message' => 'Bad Request',
+            'data' => $data
+        );
+        $this->set(array(
+            'response' => $response,
+            '_serialize' => 'response'
+        ));
     }
 
 }

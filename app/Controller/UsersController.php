@@ -7,6 +7,7 @@ class UsersController extends AppController {
         parent::beforeFilter();
     }
 
+    /*
     public function index() {
         $data = array('test' => 3);
         $this->set(array(
@@ -14,11 +15,12 @@ class UsersController extends AppController {
             '_serialize' => array('data')
         ));
     }
+     */
 
     public function register() {
 
         if (!$this->request->is('post') || empty($this->request->data['username'])) {
-            throw new BadRequestException();
+            $this->badRequest(array());
         }
 
         $username = $this->request->data['username'];
