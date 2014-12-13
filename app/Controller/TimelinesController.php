@@ -7,10 +7,16 @@ class TimelinesController extends AppController {
     }
 
     public function index() {
-        $data = array('test' => 3);
-        $this->set(array(
-            'data' => $data,
-            '_serialize' => 'data'
+        if (!isset($this->request->query['uid'])) {
+            throw new BadRequestException();
+        }
+        $user_id = $this->request->query['uid'];
+        $timelines = $this->Timeline->find('all',array(
+            'conditions' => array(
+                'Timeline.user_id' => $user_id
+            )
         ));
+        $this->success($timelines);
     }
+
 }

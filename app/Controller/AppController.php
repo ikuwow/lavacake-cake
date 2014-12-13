@@ -42,4 +42,16 @@ class AppController extends Controller {
         parent::beforeFilter();
     }
 
+    public function success($data) {
+        $response = array(
+            'message' => 'success',
+            'data' => $data
+        );
+        $this->set(array(
+            'response' => $response,
+            '_serialize' => 'response'
+        ));
+
+    }
+
 }
