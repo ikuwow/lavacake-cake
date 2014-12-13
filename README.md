@@ -14,6 +14,7 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 * /users/register.json
 * postでusername: ****
 * ユーザーが存在しなかったら新規登録、存在したらそのまま。
+* successとuser_idが帰ってきます
 
 
 ### ユーザーの持っているタイムラインを全て取得（未実装）
