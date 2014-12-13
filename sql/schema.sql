@@ -6,6 +6,7 @@ CREATE TABLE if not exists users (
     tw_access_token int null,
     tw_access_tooken_secret int null,
     email varchar(255) null,
+    # password varchar(255) null,
     created datetime not null,
     modified datetime null
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
