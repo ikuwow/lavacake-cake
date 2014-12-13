@@ -7,9 +7,33 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 
 ## APIの仕様
 
+### 一般
+
+レスポンスは"Success"と"BadRequest"の2種類。それぞれステータスコードは1000, 2000.
+成功か失敗かはresponseCodeで判断するのがわかりやすいです。
+
+``` Success
+{
+  "data" : [...],
+  "message" : "Success",
+  "responseCode" : 1000
+}
+```
+
+```BadRequest
+{
+  "data" : [...],
+  "message" : "Bad Request",
+  "responseCode" : 2000
+}
+```
+
+
 ### 会員登録
 
-アプリ側でFacebookかTwitterの認証が成功した後、DBにアクセストークンを保存するメソッド
+usernameが存在していたらそのまま通過させuser_idを返す。
+存在していなかったら新規登録して、user_idを返す。
+（本来は、アプリ側でFacebookかTwitterの認証が成功した後、DBにアクセストークンを保存するメソッド）
 
 * /users/register.json
 * POSTでusername: [:username]
