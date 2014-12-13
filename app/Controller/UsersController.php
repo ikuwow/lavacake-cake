@@ -23,15 +23,16 @@ class UsersController extends AppController {
 
         $username = $this->request->data['username'];
 
-        $count = $this->User->find('count',array(
+        $user = $this->User->find('first',array(
             'conditions' => array(
                 'User.username' => $username
             )
         ));
 
-        $stat = 0;
-        if ($count==0) { // まだ未登録なら追加
+        if (empty($user)) { // まだ未登録なら追加
             $stat = $this->User->register($username);
+        } else {
+            $stat = $user['User']['id'];
         }
         
 
