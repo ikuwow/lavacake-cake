@@ -37,6 +37,9 @@ class PagesController extends AppController {
  */
 	public $uses = array();
 
+    public function beforeFilter() {
+    }
+
 /**
  * Displays a view
  *
@@ -73,4 +76,14 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
+
+    public function test() {
+        $data = array(
+            'test' => 3
+        );
+        $this->set(array(
+            'data' => $data,
+            '_serialize' => 'data'
+        ));
+    }
 }
