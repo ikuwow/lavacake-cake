@@ -31,14 +31,17 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 * GET
 * successとタイムライン一覧が帰ってきます
 
-### タイムラインを作成（未実装）
+### タイムラインを作成
 
 * /timeline/create.json
 * POSTでデータを送る
 * name: タイムライン名
 * user_id: ユーザID
 * fb_user_id : facebookユーザーID（数値）
-* tw_user_id : twitter ユーザーID（数値）
+* tw_user_id : twitterユーザーID（数値）
+
+fb_user_idとtw_user_idはどちらかが存在すればタイムライン作成が可能。
+どちらもないとBad Request
 
 trueまたはfalseが帰ってきます
 
