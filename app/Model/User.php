@@ -2,8 +2,12 @@
 
 class User extends AppModel {
 
-    public function register($api_tokens) {
-        // $this->save($api_tokens);
-        return false;
+    public function register($username) {
+        $this->save(array(
+            'User' => array(
+                'username' => $username
+            )
+        ));
+        return $this->getLastInsertId();
     }
 }

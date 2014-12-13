@@ -16,14 +16,29 @@ class UsersController extends AppController {
     }
 
     public function register() {
-        $api_tokens = $this->request->data;
-        $stat = $this->User->register($api_tokens);
 
-        if ($stat) {
-            $response = array('message' => 'Register success');
-        } else {
-            $response = array('message' => 'Register failure');
+        if (!$this->request->is('post') || !isset($this->request->data['username'])) {
+            throw new BadRequestException();
         }
+
+        $username = $this->request->data['username'];
+
+        $count = $this->User->find('count',array(
+            'conditions' => array(
+                'User.username' => $username
+            )
+        ));
+
+        $stat = 0;
+        if ($count==0) { // まだ未登録なら追加
+            $stat = $this->User->register($username);
+        }
+        
+
+        $response = array(
+            'message' => 'Success',
+            'data' => $stat
+        );
 
         $this->set(array(
             'response' => $response,
