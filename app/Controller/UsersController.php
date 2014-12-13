@@ -21,6 +21,7 @@ class UsersController extends AppController {
 
         if (!$this->request->is('post') || empty($this->request->data['username'])) {
             $this->badRequest(array());
+            return;
         }
 
         $username = $this->request->data['username'];

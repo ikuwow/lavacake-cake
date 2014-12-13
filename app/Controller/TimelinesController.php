@@ -8,7 +8,7 @@ class TimelinesController extends AppController {
 
     public function index() {
         if (!isset($this->request->query['uid'])) {
-            throw new BadRequestException();
+            $this->badRequest();
         }
         $user_id = $this->request->query['uid'];
         $timelines = $this->Timeline->find('all',array(

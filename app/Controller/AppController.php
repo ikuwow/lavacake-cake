@@ -41,7 +41,7 @@ class AppController extends Controller {
     }
 
     public function success($data = array()) {
-        $this->resonse->statusCode(200);
+        $this->response->statusCode(200);
         $response = array(
             'responseCode' => 1000,
             'message' => 'Success',
