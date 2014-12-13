@@ -23,7 +23,7 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 
 * /users/timelines.json?uid=[:user_id]
 * GET
-* 
+* Timelinesが帰ってきます。
 
 ### タイムライン（一人）の中のアカウントID情報を全て取得（未実装）
 
