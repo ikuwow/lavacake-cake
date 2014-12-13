@@ -19,13 +19,42 @@ class TimelinesController extends AppController {
         $this->success($timelines);
     }
 
+    // 引数
+    // user_id
+    // name
+    // fb_user_id or
+    // tw_user_id
     public function create() {
 
         if (!$this->request->is('post')) {
             throw new BadRequestException();
         }
 
-        $res = $this->Timeline->addNewTimeline($this->request->data);
+        $data = $this->request->data;
+
+        if (empty($data['user_id']) || empty($data['name'])) {
+            throw new BadRequestException();
+        }
+        $timeline = array(
+            'Timeline' => array(
+                'user_id' => $data['user_id'],
+                'name' => $data['name']
+            )
+        );
+
+        if (empty($data['fb_user_id']) && empty($data['tw_user_id'])) {
+            throw new BadRequestException();
+        } elseif (!empty($data['fb_user_id'])) {
+            $timeline['TimelinesFacebook'] = array(
+                'facebook_user_id' => $data['fb_user_id']
+            );
+        } elseif (!empty($data['tw_user_id'])) {
+            $timeline['TimelinesTwitter'] = array(
+                'twitter_user_id' => $data['tw_user_id']
+            );
+        }
+
+        $res = $this->Timeline->addNewTimeline($data);
         $this->success($res);
     }
 
