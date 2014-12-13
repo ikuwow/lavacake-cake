@@ -1,50 +1,44 @@
-# CakePHP
+# Lavacake
 
-[![Latest Stable Version](https://poser.pugx.org/cakephp/cakephp/v/stable.svg)](https://packagist.org/packages/cakephp/cakephp)
-[![License](https://poser.pugx.org/cakephp/cakephp/license.svg)](https://packagist.org/packages/cakephp/cakephp)
-[![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
-[![Code consistency](http://squizlabs.github.io/PHP_CodeSniffer/analysis/cakephp/cakephp/grade.svg)](http://squizlabs.github.io/PHP_CodeSniffer/analysis/cakephp/cakephp/)
+のAPI側。
 
-[![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
+http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
+全部HTTPでお願いします（SSLなし）
 
-CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.
-Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+## APIの仕様
 
+### 会員登録
 
-## Some Handy Links
+アプリ側でFacebookかTwitterの認証が成功した後、DBにアクセストークンを保存するメソッド
 
-[CakePHP](http://www.cakephp.org) - The rapid development PHP framework
+* /register
+* data[User][fb_access_token]: ****
+* data[User][tw_access_token]: ***, data[User][tw_access_token_secret]: ****)
+* return true or false
 
-[CookBook](http://book.cakephp.org) - THE CakePHP user documentation; start learning here!
+### ユーザーの持っているタイムラインを全て取得
 
-[API](http://api.cakephp.org) - A reference to CakePHP's classes
+ログインユーザーの持っているタイムラインを全て取得
 
-[Plugins](http://plugins.cakephp.org/) - A repository of extensions to the framework
+* /users/timelines
+* GET
 
-[The Bakery](http://bakery.cakephp.org) - Tips, tutorials and articles
+### タイムライン（一人）の中のアカウントID情報を全て取得
 
-[Community Center](http://community.cakephp.org) - A source for everything community related
+* /timeline/[timeline_id]
+* GET
 
-[Training](http://training.cakephp.org) - Join a live session and get skilled with the framework
+### タイムラインを作成
 
-[CakeFest](http://cakefest.org) - Don't miss our annual CakePHP conference
+* /timeline/create
+* POSTでデータを送る
+* data[Timeline][name]: タイムライン名
+* data[TimelinesFacebook][facebook_user_id] (したのとどちらか）
+* data[TimelinesTwitter][twitter_user_id] （うえのとどちらか）
 
-[Cake Software Foundation](http://cakefoundation.org) - Promoting development related to CakePHP
+### タイムラインを編集
 
+あとでやる
 
-## Get Support!
-
-[#cakephp](http://webchat.freenode.net/?channels=#cakephp) on irc.freenode.net - Come chat with us, we have cake
-
-[Google Group](https://groups.google.com/group/cake-php) - Community mailing list and forum
-
-[GitHub Issues](https://github.com/cakephp/cakephp/issues) - Got issues? Please tell us!
-
-[Roadmaps](https://github.com/cakephp/cakephp/wiki#roadmaps) - Want to contribute? Get involved!
-
-
-## Contributing
-
-[CONTRIBUTING.md](CONTRIBUTING.md) - Quick pointers for contributing to the CakePHP project
-
-[CookBook "Contributing" Section (2.x)](http://book.cakephp.org/2.0/en/contributing.html) [(3.0)](http://book.cakephp.org/3.0/en/contributing.html) - Version-specific details about contributing to the project
+*
+*
