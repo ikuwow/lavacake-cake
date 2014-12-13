@@ -1,5 +1,6 @@
 <?php
 
+// /users/register.json
 class UsersController extends AppController {
 
     public function beforefilter() {
@@ -15,8 +16,8 @@ class UsersController extends AppController {
     }
 
     public function register() {
-        $data = $this->request->data;
-        $stat = $this->User->register($data);
+        $api_tokens = $this->request->data;
+        $stat = $this->User->register($api_tokens);
 
         if ($stat) {
             $response = array('message' => 'Register success');
@@ -28,7 +29,6 @@ class UsersController extends AppController {
             'response' => $response,
             '_serialize' => 'response'
         ));
-
 
     }
 
