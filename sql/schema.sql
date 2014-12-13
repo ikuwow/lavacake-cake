@@ -15,7 +15,7 @@ CREATE TABLE if not exists users (
 CREATE TABLE if not exists timelines (
     id int not null primary key auto_increment,
     user_id int not null,
-    name int not null,
+    name int unique not null,
     created datetime not null,
     modified datetime null,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)

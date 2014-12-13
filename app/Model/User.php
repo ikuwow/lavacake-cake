@@ -6,6 +6,10 @@ class User extends AppModel {
         'Timeline'
     );
 
+    public $validate = array(
+        'username' => 'notEmpty'
+    );
+
     public function register($username) {
         $this->save(array(
             'User' => array(

@@ -19,4 +19,14 @@ class TimelinesController extends AppController {
         $this->success($timelines);
     }
 
+    public function create() {
+
+        if (!$this->request->is('post')) {
+            throw new BadRequestException();
+        }
+
+        $res = $this->Timeline->addNewTimeline($this->request->data);
+        $this->success($res);
+    }
+
 }
