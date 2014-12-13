@@ -35,9 +35,13 @@ http://ec2-54-64-228-5.ap-northeast-1.compute.amazonaws.com
 
 * /timeline/create.json
 * POSTでデータを送る
-* data[Timeline][name]: タイムライン名
-* data[TimelinesFacebook][facebook_user_id] (したのとどちらか）
-* data[TimelinesTwitter][twitter_user_id] （うえのとどちらか）
+* name: タイムライン名
+* user_id: ユーザID
+* fb_user_id : facebookユーザーID（数値）
+* tw_user_id : twitter ユーザーID（数値）
+
+trueまたはfalseが帰ってきます
+
 
 ### タイムラインを編集（未実装）
 
