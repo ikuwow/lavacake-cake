@@ -17,7 +17,7 @@ class UsersController extends AppController {
 
     public function register() {
 
-        if (!$this->request->is('post') || !isset($this->request->data['username'])) {
+        if (!$this->request->is('post') || empty($this->request->data['username'])) {
             throw new BadRequestException();
         }
 
