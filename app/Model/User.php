@@ -10,10 +10,11 @@ class User extends AppModel {
         'username' => 'notEmpty'
     );
 
-    public function register($username) {
+    public function fbRegister($username, $fb_access_token) {
         $this->save(array(
             'User' => array(
-                'username' => $username
+                'username' => $username,
+                'fb_access_token' => $fb_access_token
             )
         ));
         return $this->getLastInsertId();
